@@ -7,3 +7,4 @@ onnx
 onnxruntime
 exporters
 faster-whisper
+openai-whisper

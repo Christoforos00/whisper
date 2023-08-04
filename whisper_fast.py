@@ -28,7 +28,7 @@ print("Detected language '%s' with probability %f" % (info.language, info.langua
 for segment in segments:
     print("[%.2fs -> %.2fs] %s" % (segment.start, segment.end, segment.text))
 
-# faster is 24 secs with beam_size=5, 13 secs with beam_size=1, float32
+# faster is 24 secs with beam_size=5, 13 secs with beam_size=1, fp32
 # faster is 20 secs with beam_size=5, 17 secs with beam_size=1, int8
 
 
