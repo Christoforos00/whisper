@@ -20,8 +20,12 @@ benchmarks on Mac, using audio30.mp3 for speech to text:
 - faster_whisper is 20 secs with beam_size=5, 17 secs with beam_size=1, int8
 
 Current thoughts:
-- detailed memory footprint results are missing, would use the "memory-profiler" package
 - In huggingface version, the quantized model is indeed faster and lighter.
 - faster_whisper is indeed faster and lighter than the openai version, as promised.
 </br> But:
 - Both the openai version and faster_whisper version are slower than huggingface (quantized or not). This needs further investigation
+
+Next steps:
+- detailed memory footprint results are missing, would use the "memory-profiler" package
+- whisper cpp code is here but hasn't been tested
+- investigate why the openai version is slower than huggingface
