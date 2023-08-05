@@ -1,6 +1,7 @@
 # whisper
 
 In order to propose a device for running Whisper, we need to investigate its inference speed and memory footprint.
+Multiple repos promise good results, but benchmarking ourselves locally is essential in order to proceed with specific devices (e.g. IPhone).
 Starting with Whisper large (v2), we create demos using different optimized versions available in open-source.
 This repo contains code for different flavors of Whisper large (v2):
 - HuggingFace version (huggingface_whisper.py)
@@ -29,3 +30,4 @@ Next steps:
 - detailed memory footprint results are missing, would use the "memory-profiler" package
 - whisper cpp code is here but hasn't been tested
 - investigate why the openai version is slower than huggingface
+- run the code on google colab cpu, to check for differences
