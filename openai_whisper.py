@@ -19,4 +19,3 @@ print(f"Fast inference time: {openai_inference_time}")
 
 # print(result["text"])
 # openai whisper implementation is 60 secs with beam_size=5, 20 secs with beam_size=1, fp32
-# openai whisper implementation is  secs with beam_size=5,  secs with beam_size=1, int8

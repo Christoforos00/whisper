@@ -7,7 +7,7 @@ from optimum.onnxruntime import (
 
 # Configure base model and save directory for compressed model
 model_id = "openai/whisper-large-v2"
-save_dir = "whisper-large"
+save_dir = "whisper-large-v2"
 
 # Export model in ONNX
 model_onnx = ORTModelForSpeechSeq2Seq.from_pretrained(model_id, export=True)
@@ -31,7 +31,7 @@ from transformers import pipeline, AutoTokenizer, AutoFeatureExtractor
 
 # Number of inferences for comparing timings
 num_inferences = 4
-save_dir = "whisper-large"
+save_dir = "whisper-large-v2"
 inference_file = "audio30.mp3"
 
 # Create pipeline based on simple ONNX model
@@ -46,9 +46,6 @@ tokenizer_quant = AutoTokenizer.from_pretrained(save_dir)
 feature_extractor_quant = AutoFeatureExtractor.from_pretrained(save_dir)
 cls_pipeline_quant = pipeline("automatic-speech-recognition", model=model_quant, tokenizer=tokenizer_quant, feature_extractor=feature_extractor_quant)
 
-# Create pipeline with original model as baseline
-cls_pipeline_original = pipeline("automatic-speech-recognition", model="openai/whisper-large-v2")
-
 # Measure inference of quantized model
 start_quantized = datetime.now()
 for i in range(num_inferences):
@@ -61,15 +58,6 @@ for i in range(num_inferences):
     res_onnx = cls_pipeline_onnx(inference_file)
 end_onnx = datetime.now()
 
-# Measure inference of original model
-start_original = datetime.now()
-for i in range(num_inferences):
-    res_orig = cls_pipeline_original(inference_file)
-end_original = datetime.now()
-
-original_inference_time = (end_original - start_original).total_seconds() / num_inferences
-print(f"Original inference time: {original_inference_time}")
-
 quantized_inference_time = (end_quantized - start_quantized).total_seconds() / num_inferences
 print(f"Quantized inference time: {quantized_inference_time}")
 
@@ -78,8 +66,5 @@ print(f"Onnx inference time: {onnx_inference_time}")
 
 print(res_onnx)
 print(res_quant)
-print(res_orig)
-print(res_quant == res_orig)
-print(res_onnx == res_orig)
 
 # original or onnx only 19, quantized 13, 2 iters
