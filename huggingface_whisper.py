@@ -10,7 +10,7 @@ def predict(processor, model, y, sr):
     transcription = processor.batch_decode(predicted_ids, skip_special_tokens=True)
     return transcription
 
-@profile()
+# @profile()
 def main():
     # Configure base model and save directory for compressed model
     model_id = "openai/whisper-large-v2"
