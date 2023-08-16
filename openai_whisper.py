@@ -9,7 +9,7 @@ def main():
     inference_file = "audio30.mp3"
     model_size = "large-v2"
     num_inferences = 1
-    beam_size = 1
+    beam_size = 5
 
     model = whisper.load_model(model_size)
 

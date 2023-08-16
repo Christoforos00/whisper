@@ -8,7 +8,7 @@ def main():
     inference_file = "audio30.mp3"
     model_size = "large-v2"
     num_inferences = 1
-    beam_size = 1
+    beam_size = 5
 
     model = WhisperModel(model_size, device="cpu", compute_type="int8")
 

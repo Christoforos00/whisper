@@ -12,7 +12,7 @@ from memory_profiler import profile
 from transformers import WhisperProcessor, WhisperForConditionalGeneration
 import librosa
 
-re_quantize = False
+re_quantize = True
 use_quantized = True
 # Number of inferences for comparing timings
 num_inferences = 1
