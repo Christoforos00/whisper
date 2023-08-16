@@ -8,3 +8,7 @@ onnxruntime
 exporters
 faster-whisper
 openai-whisper
+memory_profiler
+librosa
+azure-cognitiveservices-speech
+whispercpp
